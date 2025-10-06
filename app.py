@@ -1,8 +1,8 @@
-# app.py
 import streamlit as st
 from sections.home import render as render_home
 from sections.simulador_inflacion import render as render_simulador
 from sections.presupuesto import render as render_presupuesto
+from sections.deudas import render as render_deudas  # ← ¡AGREGA ESTA LÍNEA!
 
 # Configuración
 st.set_page_config(
@@ -19,7 +19,12 @@ st.sidebar.image("assets/logo.png", width=120)
 st.sidebar.title("Finanzas Claras")
 seccion = st.sidebar.radio(
     "Navegación",
-    ["🏠 Inicio", "📊 Simulador de Inflación", "💰 Presupuesto Inteligente"],
+    [
+        "🏠 Inicio", 
+        "📊 Simulador de Inflación", 
+        "💰 Presupuesto Inteligente",
+        "💳 Manejo de Deudas"  # ← ¡AGREGA ESTA LÍNEA!
+    ],
     index=0
 )
 
@@ -30,6 +35,8 @@ elif seccion == "📊 Simulador de Inflación":
     render_simulador()
 elif seccion == "💰 Presupuesto Inteligente":
     render_presupuesto()
+elif seccion == "💳 Manejo de Deudas": 
+    render_deudas()
 # Footer (global)
 # ----------------------
 st.markdown(
